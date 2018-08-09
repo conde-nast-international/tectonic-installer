@@ -57,6 +57,7 @@ resource "aws_autoscaling_group" "workers" {
   min_size             = "${var.instance_count}"
   launch_configuration = "${aws_launch_configuration.worker_conf.id}"
   vpc_zone_identifier  = ["${var.subnet_ids}"]
+  termination_policies = "OldestInstance"
 
   tags = [
     {

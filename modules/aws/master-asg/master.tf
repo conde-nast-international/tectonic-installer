@@ -32,8 +32,8 @@ resource "aws_autoscaling_group" "masters" {
   min_size             = "${var.instance_count}"
   launch_configuration = "${aws_launch_configuration.master_conf.id}"
   vpc_zone_identifier  = ["${var.subnet_ids}"]
-
-  load_balancers = ["${var.aws_lbs}"]
+  termination_policies = "OldestInstance"
+  load_balancers       = ["${var.aws_lbs}"]
 
   tags = [
     {
