@@ -153,7 +153,10 @@ resource "aws_iam_role_policy" "master_policy" {
     {
       "Action" : [
         "autoscaling:DescribeAutoScalingGroups",
-        "autoscaling:DescribeAutoScalingInstances"
+        "autoscaling:DescribeAutoScalingInstances",
+        "autoscaling:DescribeTags",
+        "autoscaling:SetDesiredCapacity",
+        "autoscaling:TerminateInstanceInAutoScalingGroup"
       ],
       "Resource": "*",
       "Effect": "Allow"
