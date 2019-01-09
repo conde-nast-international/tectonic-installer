@@ -157,40 +157,30 @@ variable "tectonic_cluster_cidr" {
 
 variable "tectonic_master_count_min" {
   type    = "string"
-  default = "3"
+  default = "1"
 
   description = <<EOF
-The number of min master nodes to be created.
-This applies only to cloud platforms.
-EOF
-}
-
-variable "tectonic_master_count" {
-  type    = "string"
-  default = "3"
-
-  description = <<EOF
-The number of desired master nodes to be created.
+The min number of master nodes to be created.
 This applies only to cloud platforms.
 EOF
 }
 
 variable "tectonic_master_count_max" {
   type    = "string"
-  default = "3"
+  default = "5"
 
   description = <<EOF
-The number of max master nodes to be created.
+The max number of master nodes to be created.
 This applies only to cloud platforms.
 EOF
 }
 
-variable "tectonic_worker_count_min" {
+variable "tectonic_master_count" {
   type    = "string"
-  default = "3"
+  default = "1"
 
   description = <<EOF
-The number of min worker nodes to be created.
+The number of master nodes to be created.
 This applies only to cloud platforms.
 EOF
 }
@@ -200,17 +190,27 @@ variable "tectonic_worker_count" {
   default = "3"
 
   description = <<EOF
-The number of desired worker nodes to be created.
+The number of worker nodes to be created.
+This applies only to cloud platforms.
+EOF
+}
+
+variable "tectonic_worker_count_min" {
+  type    = "string"
+  default = "3"
+
+  description = <<EOF
+The min number of worker nodes to be created.
 This applies only to cloud platforms.
 EOF
 }
 
 variable "tectonic_worker_count_max" {
   type    = "string"
-  default = "3"
+  default = "10"
 
   description = <<EOF
-The number of max worker nodes to be created.
+The max number of worker nodes to be created.
 This applies only to cloud platforms.
 EOF
 }
