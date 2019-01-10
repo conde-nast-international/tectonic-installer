@@ -59,7 +59,7 @@ variable "tectonic_image_re" {
 EOF
 
   type    = "string"
-  default = "/^([^/]+/[^/]+/[^/]+):(.*)$/"
+  default = "/^docker://([^/]+/[^/]+/[^/]+):(.*)$/"
 }
 
 variable "tectonic_container_images" {
