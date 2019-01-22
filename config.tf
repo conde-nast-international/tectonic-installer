@@ -72,7 +72,7 @@ variable "tectonic_container_images" {
     gcloudsdk                    = "google/cloud-sdk:178.0.0-alpine"
     bootkube                     = "quay.io/coreos/bootkube:v0.13.0"
     calico                       = "quay.io/calico/node:v2.6.7"
-    calico_cni                   = "quay.io/calico/cni:v1.11.0"
+    calico_cni                   = "quay.io/calico/cni:v1.11.4"
     console                      = "quay.io/coreos/tectonic-console:v4.0.1"
     error_server                 = "quay.io/coreos/tectonic-error-server:1.1"
     etcd                         = "quay.io/coreos/etcd:v3.2.17"
