@@ -13,12 +13,8 @@ ExecStart=/usr/bin/docker run --name dd-agent \
             -v /var/run/docker.sock:/var/run/docker.sock:ro \
             -v /proc/:/host/proc/:ro \
             -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
-            -v /opt/dd-agent-conf.d:/conf.d:ro \
-            -v /data/db:/data/db:ro \
-            -e API_KEY=${datadog_api_key} \
-            -e SD_BACKEND=docker \
-            -e NON_LOCAL_TRAFFIC=false \
-            datadog/docker-dd-agent:latest
+            -e DD_API_KEY=${datadog_api_key} \
+            datadog/agent:latest
 ExecStop=/usr/bin/docker stop dd-agent
 Restart=on-failure
 RestartSec=15

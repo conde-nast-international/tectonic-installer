@@ -79,7 +79,7 @@ data "ignition_systemd_unit" "etcd" {
 }
 
 data "ignition_systemd_unit" "etcd_datadog_agent" {
-  name = "dd-agent.service"
+  name    = "dd-agent.service"
   enabled = true
   content = "${data.template_file.etcd_datadog_agent.rendered}"
 }

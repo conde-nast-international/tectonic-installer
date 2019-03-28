@@ -132,6 +132,7 @@ module "ignition_masters" {
   ntp_servers               = "${var.tectonic_ntp_servers}"
   proxy_exclusive_units     = "${var.tectonic_proxy_exclusive_units}"
   tectonic_vanilla_k8s      = "${var.tectonic_vanilla_k8s}"
+  datadog_api_key           = "${var.datadog_api_key}"
 }
 
 module "masters" {
