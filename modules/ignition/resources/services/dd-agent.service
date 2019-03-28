@@ -14,7 +14,7 @@ ExecStart=/usr/bin/docker run --name dd-agent \
             -v /proc/:/host/proc/:ro \
             -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
             -e DD_API_KEY=${datadog_api_key} \
-            datadog/agent:latest
+            datadog/agent:6.10.2
 ExecStop=/usr/bin/docker stop dd-agent
 Restart=on-failure
 RestartSec=15
