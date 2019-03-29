@@ -198,6 +198,7 @@ variable "proxy_exclusive_units" {
 }
 
 variable "datadog_api_key" {
-  type = "string"
+  type        = "string"
   description = "API key for pushing metrics to DataDog via the agent"
+  default     = ""
 }
