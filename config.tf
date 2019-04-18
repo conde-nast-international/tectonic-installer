@@ -75,7 +75,7 @@ variable "tectonic_container_images" {
     calico_cni                   = "quay.io/calico/cni:v1.11.4"
     console                      = "quay.io/coreos/tectonic-console:v4.0.1"
     error_server                 = "quay.io/coreos/tectonic-error-server:1.1"
-    etcd                         = "quay.io/coreos/etcd:v3.2.17"
+    etcd                         = "quay.io/coreos/etcd:v3.3.12"
     etcd_operator                = "quay.io/coreos/etcd-operator:v0.5.0"
     flannel                      = "quay.io/coreos/flannel:v0.10.0-amd64"
     flannel_cni                  = "quay.io/coreos/flannel-cni:v0.2.0"
@@ -128,7 +128,7 @@ variable "tectonic_versions" {
   type        = "map"
 
   default = {
-    etcd          = "3.2.17"
+    etcd          = "3.3.12"
     kubernetes    = "1.12.5+conde.1"
     monitoring    = "1.9.2"
     tectonic      = "1.8.7-tectonic.1"
