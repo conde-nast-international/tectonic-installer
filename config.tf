@@ -129,7 +129,7 @@ variable "tectonic_versions" {
 
   default = {
     etcd          = "3.2.17"
-    kubernetes    = "1.12.5+conde.1"
+    kubernetes    = "1.13.5+conde.1"
     monitoring    = "1.9.2"
     tectonic      = "1.8.7-tectonic.1"
     tectonic-etcd = "0.0.1"
