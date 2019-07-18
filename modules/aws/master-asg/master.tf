@@ -34,6 +34,7 @@ resource "aws_autoscaling_group" "masters" {
   vpc_zone_identifier  = ["${var.subnet_ids}"]
   metrics_granularity  = "1Minute"
   enabled_metrics      = ["GroupMinSize", "GroupMaxSize", "GroupDesiredCapacity", "GroupInServiceInstances", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
+  termination_policies = ["OldestInstance"]
 
   load_balancers = ["${var.aws_lbs}"]
 
@@ -68,7 +69,7 @@ resource "aws_launch_configuration" "master_conf" {
   key_name                    = "${var.ssh_key}"
   security_groups             = ["${var.master_sg_ids}"]
   iam_instance_profile        = "${aws_iam_instance_profile.master_profile.arn}"
-  associate_public_ip_address = "${var.public_endpoints}"
+  associate_public_ip_address = false
   user_data                   = "${data.ignition_config.s3.rendered}"
 
   lifecycle {

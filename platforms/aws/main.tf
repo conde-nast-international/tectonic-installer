@@ -184,7 +184,7 @@ module "masters" {
   root_volume_type                     = "${var.tectonic_aws_master_root_volume_type}"
   s3_bucket                            = "${aws_s3_bucket.tectonic.bucket}"
   ssh_key                              = "${var.tectonic_aws_ssh_key}"
-  subnet_ids                           = "${module.vpc.master_subnet_ids}"
+  subnet_ids                           = "${module.vpc.worker_subnet_ids}"
 }
 
 module "ignition_workers" {
