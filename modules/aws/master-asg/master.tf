@@ -34,7 +34,7 @@ resource "aws_autoscaling_group" "masters" {
   vpc_zone_identifier  = ["${var.subnet_ids}"]
   metrics_granularity  = "1Minute"
   enabled_metrics      = ["GroupMinSize", "GroupMaxSize", "GroupDesiredCapacity", "GroupInServiceInstances", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
-  termination_policies = "OldestInstance"
+  termination_policies = ["OldestInstance"]
 
   load_balancers = ["${var.aws_lbs}"]
 
