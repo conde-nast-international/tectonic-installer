@@ -48,7 +48,7 @@ variable "tectonic_aws_workers_ec2_ami_override" {
   description = "(optional) AMI override for worker nodes. Example: `ami-foobar123`."
   default     = ""
 }
-variable "tectonic_aws_master_ec2_ami_override" {
+variable "tectonic_aws_masters_ec2_ami_override" {
   type        = "string"
   description = "(optional) AMI override for master nodes. Example: `ami-foobar123`."
   default     = ""
