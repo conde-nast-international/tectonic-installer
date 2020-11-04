@@ -1,33 +1,10 @@
 locals {
-  ami_owner = "595879546273"
   arn       = "aws"
-}
-
-data "aws_ami" "coreos_ami" {
-  filter {
-    name   = "name"
-    values = ["CoreOS-${var.container_linux_channel}-${var.container_linux_version}-*"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  filter {
-    name   = "owner-id"
-    values = ["${local.ami_owner}"]
-  }
 }
 
 resource "aws_launch_configuration" "worker_conf" {
   instance_type        = "${var.ec2_type}"
-  image_id             = "${coalesce(var.ec2_ami, data.aws_ami.coreos_ami.image_id)}"
+  image_id             = "${var.ec2_ami}"
   name_prefix          = "${var.cluster_name}-worker-"
   key_name             = "${var.ssh_key}"
   security_groups      = ["${var.sg_ids}"]

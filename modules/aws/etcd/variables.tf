@@ -10,14 +10,6 @@ variable "cluster_name" {
   type = "string"
 }
 
-variable "container_linux_channel" {
-  type = "string"
-}
-
-variable "container_linux_version" {
-  type = "string"
-}
-
 variable "instance_count" {
   default = "3"
 }
