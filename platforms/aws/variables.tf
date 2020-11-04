@@ -43,9 +43,20 @@ variable "tectonic_aws_etcd_ec2_type" {
   default = "t2.medium"
 }
 
-variable "tectonic_aws_ec2_ami_override" {
+variable "tectonic_aws_workers_ec2_ami_override" {
   type        = "string"
-  description = "(optional) AMI override for all nodes. Example: `ami-foobar123`."
+  description = "(optional) AMI override for worker nodes. Example: `ami-foobar123`."
+  default     = ""
+}
+variable "tectonic_aws_master_ec2_ami_override" {
+  type        = "string"
+  description = "(optional) AMI override for master nodes. Example: `ami-foobar123`."
+  default     = ""
+}
+
+variable "tectonic_aws_etcd_ec2_ami_override" {
+  type        = "string"
+  description = "(optional) AMI override for etcd nodes. Example: `ami-foobar123`."
   default     = ""
 }
 
