@@ -1,28 +1,5 @@
 locals {
-  ami_owner = "595879546273"
   arn       = "aws"
-}
-
-data "aws_ami" "coreos_ami" {
-  filter {
-    name   = "name"
-    values = ["CoreOS-${var.container_linux_channel}-${var.container_linux_version}-*"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  filter {
-    name   = "owner-id"
-    values = ["${local.ami_owner}"]
-  }
 }
 
 resource "aws_iam_instance_profile" "etcd" {
@@ -109,7 +86,7 @@ EOF
 
 resource "aws_instance" "etcd_node" {
   count = "${length(var.external_endpoints) == 0 ? var.instance_count : 0}"
-  ami   = "${coalesce(var.ec2_ami, data.aws_ami.coreos_ami.image_id)}"
+  ami   = "${var.ec2_ami}"
 
   iam_instance_profile   = "${aws_iam_instance_profile.etcd.name}"
   instance_type          = "${var.ec2_type}"

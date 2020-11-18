@@ -6,13 +6,6 @@ provider "aws" {
 
 data "aws_availability_zones" "azs" {}
 
-module "container_linux" {
-  source = "../../modules/container_linux"
-
-  release_channel = "${var.tectonic_container_linux_channel}"
-  release_version = "${var.tectonic_container_linux_version}"
-}
-
 module "vpc" {
   source = "../../modules/aws/vpc"
 
@@ -69,9 +62,7 @@ module "etcd" {
   cluster_id                 = "${module.tectonic.cluster_id}"
   cluster_name               = "${var.tectonic_cluster_name}"
   container_image            = "${var.tectonic_container_images["etcd"]}"
-  container_linux_channel    = "${var.tectonic_container_linux_channel}"
-  container_linux_version    = "${module.container_linux.version}"
-  ec2_ami                    = "${var.tectonic_aws_ec2_ami_override}"
+  ec2_ami                    = "${var.tectonic_aws_etcd_ec2_ami_override}"
   ec2_type                   = "${var.tectonic_aws_etcd_ec2_type}"
   etcd_iam_role              = "${var.tectonic_aws_etcd_iam_role_name}"
   external_endpoints         = "${compact(var.tectonic_etcd_servers)}"
@@ -145,9 +136,7 @@ module "masters" {
   cluster_id                           = "${module.tectonic.cluster_id}"
   cluster_name                         = "${var.tectonic_cluster_name}"
   container_images                     = "${var.tectonic_container_images}"
-  container_linux_channel              = "${var.tectonic_container_linux_channel}"
-  container_linux_version              = "${module.container_linux.version}"
-  ec2_ami                              = "${var.tectonic_aws_ec2_ami_override}"
+  ec2_ami                              = "${var.tectonic_aws_masters_ec2_ami_override}"
   ec2_type                             = "${var.tectonic_aws_master_ec2_type}"
   extra_tags                           = "${var.tectonic_aws_extra_tags}"
   ign_bootkube_path_unit_id            = "${module.bootkube.systemd_path_unit_id}"
@@ -221,9 +210,7 @@ module "workers" {
   autoscaling_group_extra_tags         = "${var.tectonic_autoscaling_group_extra_tags}"
   cluster_id                           = "${module.tectonic.cluster_id}"
   cluster_name                         = "${var.tectonic_cluster_name}"
-  container_linux_channel              = "${var.tectonic_container_linux_channel}"
-  container_linux_version              = "${module.container_linux.version}"
-  ec2_ami                              = "${var.tectonic_aws_ec2_ami_override}"
+  ec2_ami                              = "${var.tectonic_aws_workers_ec2_ami_override}"
   ec2_type                             = "${var.tectonic_aws_worker_ec2_type}"
   extra_tags                           = "${var.tectonic_aws_extra_tags}"
   ign_ca_cert_id_list                  = "${module.ignition_masters.ca_cert_id_list}"
