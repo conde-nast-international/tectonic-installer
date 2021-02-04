@@ -1,7 +1,3 @@
-terraform {
-  required_version = ">= 0.10.7"
-}
-
 provider "archive" {
   version = "1.0.0"
 }
@@ -648,4 +644,13 @@ variable "tectonic_proxy_exclusive_units" {
 Global proxy settings will not be affected in this case.
 When set to false, the proxy settings will apply globally, including to all processes lauched by users.
 EOF
+}
+
+terraform {
+  required_version = "0.11.13"
+  backend "s3" {
+    bucket = "cnid-terraform-state-sandbox"
+    key    = "eu-central-1/k8s-eu.tfstate"
+    region = "eu-west-1"
+  }
 }
