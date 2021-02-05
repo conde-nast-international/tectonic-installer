@@ -19,7 +19,8 @@ resource "tls_self_signed_cert" "etcd_ca" {
   }
 
   is_ca_certificate     = true
-  validity_period_hours = "${var.validity_period}"
+  #validity_period_hours = "${var.validity_period}"
+  validity_period_hours = "26282"
 
   allowed_uses = [
     "key_encipherment",
