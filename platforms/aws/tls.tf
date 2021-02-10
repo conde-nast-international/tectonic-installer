@@ -18,6 +18,7 @@ module "etcd_certs" {
   etcd_client_key_path  = "${var.tectonic_etcd_client_key_path}"
   self_signed           = "${var.tectonic_self_hosted_etcd != "" ? "true" : length(compact(var.tectonic_etcd_servers)) == 0 ? "true" : "false"}"
   service_cidr          = "${var.tectonic_service_cidr}"
+  validity_period       = "${var.tectonic_tls_validity_period}"
 }
 
 module "ingress_certs" {
